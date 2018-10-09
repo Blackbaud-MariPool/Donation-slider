@@ -48,20 +48,33 @@
 //custom slider javascript
 $(function() {
   var output = document.querySelectorAll('output')[0];
-  console.log(output);
+  //console.log(output);
 
   $(document).on('input', 'input[type="range"]', function(e) {
     output.innerHTML = e.currentTarget.value;
   });
 
-  $('output').change(function() {
-    alert("sliding");
-  })
-
   $('input[type=range]').rangeslider({
     polyfill: false
   });
 
+$('input#donationRangeFinder').on('input change', function() {
+  console.log(output.innerHTML);
+  var outputRange = output.innerHTML;
+  if (outputRange == 50) {
+    $('#level25, #level75, level100').hide();
+    $('#level50').show();
+  } else if (outputRange == 75) {
+    $('#level25, #level50, #level100').hide();
+    $('#level75').show();
+  } else if (outputRange == 100) {
+    $('#level25, #level 50, #level75').hide();
+    $('#level100').show();
+  } else {
+    $('#level50, #level75, #level100').hide();
+    $('#level25').show();
+  }
+});
   
 });
 
