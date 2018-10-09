@@ -1,0 +1,68 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.css" rel="stylesheet" type="text/css">
+<style>
+.level {
+	border: 1px solid red;
+	width: 100%;
+	height: auto;
+	min-height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 100px;
+}
+</style>
+
+<div>
+	<h2>Rangefinder test</h2>
+
+<p id="rangeNumber"></p>
+
+<!-- <input
+    type="range"
+    min="10"                    // default 0
+    max="1000"                  // default 100
+    step="10"                   // default 1
+    value="300"                 // default min + (max-min)/2
+    data-orientation="vertical" // default horizontal
+> -->
+
+<!--https://andreruffert.github.io/rangeslider.js/-->
+<input id="donationRangeFinder" type="range" value="25" step="25" min="25" max="100">
+<small id="helper" class="slideRight" style="padding-top: 28px;display: block;">Slide to get started →</small>
+<h2 style="display: inline-block; margin-bottom: 50px;"></h2>$<output style="display: inline-block">25</output>
+
+<div id="level-image">
+<div id="level25" class="level">$25</div>
+<div id="level50" class="level" style="display:none">$50</div>
+<div id="level75" class="level" style="display:none">$75</div>
+<div id="level100" class="level" style="display:none">$100</div>
+</div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.2/rangeslider.js"></script>
+<script>
+
+
+//custom slider javascript
+$(function() {
+  var output = document.querySelectorAll('output')[0];
+  console.log(output);
+
+  $(document).on('input', 'input[type="range"]', function(e) {
+    output.innerHTML = e.currentTarget.value;
+  });
+
+  $('output').change(function() {
+    alert("sliding");
+  })
+
+  $('input[type=range]').rangeslider({
+    polyfill: false
+  });
+
+  
+});
+
+</script>
